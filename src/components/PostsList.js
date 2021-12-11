@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import Post from './Post';
 import PropTypes from 'prop-types';
+import { Post } from './';
 
 class PostsList extends Component {
   render() {
     const { posts } = this.props;
     return (
-      <div>
+      <div className="post-list">
         {posts.map((post) => {
           return <Post post={post} key={post._id} />;
         })}
