@@ -5,9 +5,52 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: lightgrey;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.post-container {
+  background-color: whitesmoke;
+  /* border: 2px solid black; */
+  margin-top: 20px;
+  height: 200px;
+}
+
+/* ----------Navbar---------- */
+
+.navbar {
+  display: flex;
+  /* border: 2px solid red; */
+  height: 50px;
+  justify-content: space-between;
+  background-color: #8018e1;
+  align-items: center;
+}
+
+.nav-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  height: 70%;
+  /* border: 2px solid red; */
+  position: relative;
+}
+
+.nav-center input {
+  height: 70%;
+  width: 100%;
+  font-size: 1rem;
+  padding-left: 6%;
+}
+
+.nav-center .search-icon {
+  height: 50%;
+  position: absolute;
+  left: 1%;
+  /* margin-left: 2%; */
 }
