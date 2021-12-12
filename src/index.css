@@ -94,7 +94,8 @@ code {
 
 /* ----------Login Form---------- */
 
-.login-form {
+.login-form,
+.profile-container {
   margin-top: 5% !important;
   text-align: center;
   margin: auto;
@@ -149,4 +150,25 @@ code {
 
 .error-msg {
   color: red;
+}
+
+/* ----------Profile---------- */
+
+.profile-container .field {
+  display: flex;
+  justify-content: space-between;
+  margin: 2% 10%;
+}
+
+.btn-edit,
+.btn-save,
+.btn-back {
+  font-size: 1rem;
+  padding: 2% 3%;
+  margin: 10% 5%;
+  background-color: #8018e1;
+  border-radius: 5px;
+  color: whitesmoke;
+  outline: None;
+  border: None;
 }

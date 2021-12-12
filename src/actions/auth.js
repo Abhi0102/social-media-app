@@ -2,6 +2,7 @@ import { APIUrls } from '../helpers/url';
 import { getFormBody } from '../helpers/utils';
 import {
   AUTHENTICATE_USER,
+  CLEAR_AUTH_STATE,
   LOGIN_FAIL,
   LOGIN_START,
   LOGIN_SUCCESS,
@@ -115,5 +116,11 @@ export function authenticateUser(user) {
 export function logoutUser() {
   return {
     type: LOG_OUT,
+  };
+}
+
+export function clearAuthState() {
+  return {
+    type: CLEAR_AUTH_STATE,
   };
 }
