@@ -26,7 +26,6 @@ class Login extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = this.state;
-    console.log(this.state);
 
     if (email && password) {
       this.props.dispatch(login(email, password));
@@ -38,7 +37,7 @@ class Login extends Component {
     return (
       <form className="login-form">
         <span className="login-heading">Log In</span>
-        {error && <div className='error-msg'>{error}</div>}
+        {error && <div className="error-msg">{error}</div>}
         <div>
           <span className="input-title">Email</span>
           <br />

@@ -2,12 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../actions/posts';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Navbar, Home, Login } from './';
-import Page404 from './Page404';
+import { Navbar, Home, Login, SignUp, Page404 } from './';
+import jwt_decode from 'jwt-decode';
 
 class App extends Component {
   componentDidMount() {
+    const token = localStorage.getItem('token');
     this.props.dispatch(fetchPosts());
+    if (token) {
+      const user = jwt_decode(token);
+      console.log('User : ', user);
+    }
   }
 
   render() {
@@ -22,6 +27,7 @@ class App extends Component {
           {/* <Route path="/" element={<Login posts={posts} />} /> */}
           <Route path="/" element={<Home posts={posts} />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
       </Router>
