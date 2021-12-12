@@ -4,6 +4,7 @@ import { fetchPosts } from '../actions/posts';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Navbar, Home, Login, SignUp, Page404 } from './';
 import jwt_decode from 'jwt-decode';
+import { authenticateUser } from '../actions/auth';
 
 class App extends Component {
   componentDidMount() {
@@ -11,7 +12,8 @@ class App extends Component {
     this.props.dispatch(fetchPosts());
     if (token) {
       const user = jwt_decode(token);
-      console.log('User : ', user);
+      console.log(user);
+      this.props.dispatch(authenticateUser(user));
     }
   }
 
