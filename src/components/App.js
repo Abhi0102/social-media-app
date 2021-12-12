@@ -12,7 +12,6 @@ class App extends Component {
     this.props.dispatch(fetchPosts());
     if (token) {
       const user = jwt_decode(token);
-      console.log(user);
       this.props.dispatch(authenticateUser(user));
     }
   }

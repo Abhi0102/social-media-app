@@ -79,6 +79,11 @@ code {
   text-decoration: None;
 }
 
+.nav-right ul li {
+  color: whitesmoke;
+  cursor: pointer;
+}
+
 /* ----------Post List---------- */
 
 .post-list {
