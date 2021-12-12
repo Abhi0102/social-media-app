@@ -19,8 +19,9 @@ class App extends Component {
           {/* <PostsList posts={posts} /> */}
         </div>
         <Routes>
-          <Route path="/" element={<Login posts={posts} />} />
-          {/* <Route path="/" element={<Home posts={posts} />} /> */}
+          {/* <Route path="/" element={<Login posts={posts} />} /> */}
+          <Route path="/" element={<Home posts={posts} />} />
+          <Route path="/login" element={<Login />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
       </Router>
