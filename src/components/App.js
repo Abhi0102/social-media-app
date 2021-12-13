@@ -6,6 +6,7 @@ import { Navbar, Home, Login, SignUp, Page404, Profile } from './';
 import jwt_decode from 'jwt-decode';
 import { authenticateUser } from '../actions/auth';
 import PrivateRoute from '../helpers/PrivateRoute';
+import UserProfile from './UserProfile';
 
 class App extends Component {
   componentDidMount() {
@@ -31,10 +32,18 @@ class App extends Component {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route
-            path="/profile/*"
+            path="/profile"
             element={
               <PrivateRoute>
                 <Profile isLoggedIn={auth.isLoggedIn} />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/user/:userId"
+            element={
+              <PrivateRoute>
+                <UserProfile />
               </PrivateRoute>
             }
           />

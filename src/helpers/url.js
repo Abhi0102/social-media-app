@@ -5,5 +5,5 @@ export const APIUrls = {
     `${rootAPIUrl}/posts?page=${page}&limit=${limit}`,
   signup: () => `${rootAPIUrl}/users/signup`,
   editProfile: () => `${rootAPIUrl}/users/edit`,
+  getUserById: (userId) => `${rootAPIUrl}/users/${userId}`,
 };
-

@@ -5,6 +5,8 @@ import {
   CLEAR_AUTH_STATE,
   EDIT_USER_FAIL,
   EDIT_USER_SUCCESS,
+  GET_USER_WITH_ID_FAIL,
+  GET_USER_WITH_ID_SUCCESS,
   LOGIN_FAIL,
   LOGIN_START,
   LOGIN_SUCCESS,
@@ -159,7 +161,7 @@ export function editUser(name, password, confirmPassword, userId) {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log('EDIT PROFILE ', data);
+        // console.log('EDIT PROFILE ', data);
         if (data.success) {
           dispatch(editUserSuccess(data.data.user));
           if (data.data.token) {

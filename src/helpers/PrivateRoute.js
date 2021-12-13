@@ -1,7 +1,7 @@
 function PrivateRoute({ children }) {
-  const { isLoggedIn } = children.props.isLoggedIn;
+  //   const { isLoggedIn } = children.props.isLoggedIn;
 
-  return isLoggedIn ? children : children;
+  return children;
 }
 
 export default PrivateRoute;
