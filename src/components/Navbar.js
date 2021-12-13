@@ -38,7 +38,9 @@ class Navbar extends Component {
               )}
               {auth.isLoggedIn && (
                 <>
-                  <li>{auth.user.name}</li>
+                  <li>
+                    <Link to="/profile">{auth.user.name}</Link>
+                  </li>
                   <li onClick={this.logOut}>Logout</li>
                 </>
               )}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { clearAuthState, login } from '../actions/auth';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class Login extends Component {
@@ -39,6 +39,9 @@ class Login extends Component {
 
   render() {
     const { error, inProgress, isLoggedIn } = this.props.auth;
+    // console.log();
+    // const from = location.state?.from?.pathname || '/';
+
     if (isLoggedIn) {
       return <Navigate to="/" />;
     }

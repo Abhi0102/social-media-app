@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Navbar, Home, Login, SignUp, Page404, Profile } from './';
 import jwt_decode from 'jwt-decode';
 import { authenticateUser } from '../actions/auth';
+import PrivateRoute from '../helpers/PrivateRoute';
 
 class App extends Component {
   componentDidMount() {
@@ -17,7 +18,7 @@ class App extends Component {
   }
 
   render() {
-    const { posts } = this.props;
+    const { posts, auth } = this.props;
     return (
       <Router>
         <div>
@@ -29,7 +30,14 @@ class App extends Component {
           <Route path="/" element={<Home posts={posts} />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/profile/*"
+            element={
+              <PrivateRoute>
+                <Profile isLoggedIn={auth.isLoggedIn} />
+              </PrivateRoute>
+            }
+          />
           <Route path="*" element={<Page404 />} />
         </Routes>
       </Router>
@@ -40,6 +48,7 @@ class App extends Component {
 function mapStateToProps(state) {
   return {
     posts: state.posts,
+    auth: state.auth,
   };
 }
 

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { clearAuthState, editUser } from '../actions/auth';
 
 class Profile extends Component {
   constructor(props) {
     super(props);
-    const { user } = props.auth;
-    console.log(props.auth);
+    const { user } = this.props.auth;
     this.state = {
       name: user.name,
       password: '',
@@ -14,22 +14,37 @@ class Profile extends Component {
     };
   }
 
-  handleEditClick = () => {
+  //   componentDidMount() {
+  //     const { user } = this.props.auth;
+  //     this.setState({
+  //       name: user.name,
+  //       password: '',
+  //       confirmPassword: '',
+  //       editMode: false,
+  //     });
+  //   }
+
+  componentWillUnmount() {
+    this.props.dispatch(clearAuthState());
+  }
+
+  handleChange = (fieldName, value) => {
     this.setState({
-      ...this.state,
-      editMode: true,
+      [fieldName]: value,
     });
+    if (fieldName === 'editMode') {
+      this.props.dispatch(clearAuthState());
+    }
   };
 
-  handleBackClick = () => {
-    this.setState({
-      ...this.state,
-      editMode: false,
-    });
+  handleSave = () => {
+    const { name, password, confirmPassword } = this.state;
+    const { user } = this.props.auth;
+    this.props.dispatch(editUser(name, password, confirmPassword, user._id));
   };
 
   render() {
-    const { user } = this.props.auth;
+    const { user, error } = this.props.auth;
     const { editMode } = this.state;
     return (
       <div className="profile-container">
@@ -45,7 +60,7 @@ class Profile extends Component {
           {editMode ? (
             <input
               type="text"
-              onChange={(e) => this.handleInputChange('name', e.target.value)}
+              onChange={(e) => this.handleChange('name', e.target.value)}
               value={this.state.name}
             />
           ) : (
@@ -58,9 +73,7 @@ class Profile extends Component {
             <div>New Password</div>
             <input
               type="password"
-              onChange={(e) =>
-                this.handleInputChange('password', e.target.value)
-              }
+              onChange={(e) => this.handleChange('password', e.target.value)}
               value={this.state.password}
             />
           </div>
@@ -72,23 +85,33 @@ class Profile extends Component {
             <input
               type="password"
               onChange={(e) =>
-                this.handleInputChange('confirmPassword', e.target.value)
+                this.handleChange('confirmPassword', e.target.value)
               }
               value={this.state.confirmPassword}
             />
           </div>
         )}
 
+        {error && <div>{error}</div>}
+        {error === false && <div>Success Change</div>}
         <div>
           {editMode ? (
-            <button className="btn-save">Save</button>
+            <button className="btn-save" onClick={this.handleSave}>
+              Save
+            </button>
           ) : (
-            <button class="btn-edit" onClick={this.handleEditClick}>
+            <button
+              className="btn-edit"
+              onClick={(e) => this.handleChange('editMode', true)}
+            >
               Edit Profile
             </button>
           )}
           {editMode && (
-            <button className="btn-back" onClick={this.handleBackClick}>
+            <button
+              className="btn-back"
+              onClick={(e) => this.handleChange('editMode', false)}
+            >
               Back
             </button>
           )}
