@@ -2,9 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Friends(props) {
+  console.log('Bhai Ke Friends', props);
   return (
+    //`user/${props.friend._id}`}
     <div>
-      <Link to={`user/${props.friend._id}`}>{props.friend.email}</Link>
+      <button onClick={() => console.log(props)}></button>
+      {/* <Link to="/">{props.friend.name}</Link> */}
       {/* <h3>Friends</h3>
       </div>
       <div>

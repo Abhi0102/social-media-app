@@ -6,18 +6,19 @@ import { Friends } from '.';
 function FriendList(props) {
   //   const friends = props.dispatch(fetchUserFriends());
   //   console.log('In Friend List', friends);
+  const { friends } = props;
+  console.log(friends);
   return (
     <div>
       <div className="friends-heading">
         <h3>Friends</h3>
+        {/* <button onClick={() => console.log(props)}></button> */}
       </div>
 
-      {props.friends && props.friends.length === 0 && (
-        <div>No Friends Found !</div>
-      )}
+      {friends && friends.length === 0 && <div>No Friends Found !</div>}
 
-      {props.friends &&
-        props.friends.map((friend) => {
+      {friends &&
+        friends.map((friend) => {
           return <Friends friend={friend.to_user} key={friend._id} />;
         })}
     </div>
