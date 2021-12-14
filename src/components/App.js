@@ -7,6 +7,7 @@ import jwt_decode from 'jwt-decode';
 import { authenticateUser } from '../actions/auth';
 import PrivateRoute from '../helpers/PrivateRoute';
 import UserProfile from './UserProfile';
+import { fetchUserFriends } from '../actions/friends';
 
 class App extends Component {
   componentDidMount() {
@@ -15,11 +16,12 @@ class App extends Component {
     if (token) {
       const user = jwt_decode(token);
       this.props.dispatch(authenticateUser(user));
+      this.props.dispatch(fetchUserFriends());
     }
   }
 
   render() {
-    const { posts, auth } = this.props;
+    const { posts, auth, friends } = this.props;
     return (
       <Router>
         <div>
@@ -28,7 +30,16 @@ class App extends Component {
         </div>
         <Routes>
           {/* <Route path="/" element={<Login posts={posts} />} /> */}
-          <Route path="/" element={<Home posts={posts} />} />
+          <Route
+            path="/"
+            element={
+              <Home
+                posts={posts}
+                isLoggedIn={auth.isLoggedIn}
+                friends={friends}
+              />
+            }
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route
@@ -58,6 +69,7 @@ function mapStateToProps(state) {
   return {
     posts: state.posts,
     auth: state.auth,
+    friends: state.friends,
   };
 }
 
