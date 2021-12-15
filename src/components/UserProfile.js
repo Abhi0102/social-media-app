@@ -29,7 +29,7 @@ function UserProfile(props) {
     if (params.userId) {
       props.dispatch(getUserById(params.userId));
     }
-  }, []);
+  }, [params.userId]);
 
   if (props.profile.inProgress) {
     return <h1>Loading..!!</h1>;

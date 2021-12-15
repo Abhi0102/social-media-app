@@ -4,22 +4,51 @@ import { connect } from 'react-redux';
 import { logoutUser } from '../actions/auth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { searchUser } from '../actions/search';
 
 class Navbar extends Component {
   logOut = () => {
     localStorage.removeItem('token');
     this.props.dispatch(logoutUser());
   };
+
+  handleSearch = (e) => {
+    const searchText = e.target.value;
+    this.props.dispatch(searchUser(searchText));
+  };
   render() {
-    const { auth } = this.props;
+    const { auth, results } = this.props;
     return (
       <nav className="navbar">
         <Link to="/">
           <div className="nav-left">Left</div>
         </Link>
         <div className="nav-center">
-          <FontAwesomeIcon className="search-icon" icon={faSearch} />
-          <input placeholder="Search"></input>
+          <div className="search-container">
+            <FontAwesomeIcon className="search-icon" icon={faSearch} />
+            <input placeholder="Search" onChange={this.handleSearch}></input>
+          </div>
+
+          {results.length > 0 && (
+            <div className="search-result-container">
+              {results.map((user) => {
+                return (
+                  <Link to={`/user/${user._id}`}>
+                    <div className="search-result-item">
+                      <div className="search-img">
+                        <img
+                          src="/favpng_avatar-user-profile-icon.png"
+                          alt="avatar"
+                          className="search-avatar-img"
+                        />
+                      </div>
+                      <div>{user.name}</div>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          )}
         </div>
         <div className="nav-right">
           <div>
@@ -53,6 +82,7 @@ class Navbar extends Component {
 function mapStateToProps(state) {
   return {
     auth: state.auth,
+    results: state.search.results,
   };
 }
 
