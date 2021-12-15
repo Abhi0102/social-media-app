@@ -83,12 +83,12 @@ function UserProfile(props) {
           <div>{user.name}</div>
         </div>
 
-        {success && <div>{successMsg} </div>}
-        {error && <div>{error}</div>}
+        {success && <div className="success-msg">{successMsg} </div>}
+        {error && <div className="error-msg">{error}</div>}
 
         {index !== -1 ? (
           <button
-            className="btn-edit"
+            className="btn-rem-frnd"
             value="removeFriend"
             onClick={(e) => handleFriendShip(e)}
             //   onClick={(e) => this.handleChange('editMode', true)}
@@ -97,7 +97,7 @@ function UserProfile(props) {
           </button>
         ) : (
           <button
-            className="btn-edit"
+            className="btn-add-frnd"
             value="addFriend"
             onClick={(e) => handleFriendShip(e)}
           >

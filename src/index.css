@@ -49,6 +49,7 @@ a {
 .search-container {
   /* border: 2px solid green; */
   position: relative;
+  height: 70%;
 }
 
 /* .nav-center input {
@@ -62,9 +63,9 @@ a {
 } */
 
 .search-container input {
-  height: 70%;
+  height: 100%;
   width: 90%;
-  margin-top: 1%;
+  /* margin-top: 1%; */
   font-size: 1rem;
   padding-left: 6%;
   border-radius: 5px;
@@ -77,7 +78,7 @@ a {
   position: absolute;
   left: 1%;
   color: grey;
-  top: 35%;
+  top: 33%;
 
   /* margin-left: 2%; */
 }
@@ -219,6 +220,10 @@ a {
   color: red;
 }
 
+.success-msg {
+  color: forestgreen;
+}
+
 /* ----------Profile---------- */
 
 .profile-container .field {
@@ -228,6 +233,8 @@ a {
 }
 
 .btn-edit,
+.btn-add-frnd,
+.btn-rem-frnd,
 .btn-save,
 .btn-back {
   font-size: 1rem;
@@ -238,6 +245,11 @@ a {
   color: whitesmoke;
   outline: None;
   border: None;
+  cursor: pointer;
+}
+
+.btn-rem-frnd {
+  background-color: #fc7745;
 }
 
 .home-ui {
