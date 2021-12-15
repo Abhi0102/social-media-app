@@ -12,4 +12,5 @@ export const APIUrls = {
   removeFriend: (userId) =>
     `${rootAPIUrl}/friendship/remove_friendship?user_id=${userId}`,
   createPost: () => `${rootAPIUrl}/posts/create`,
+  createComment: () => `${rootAPIUrl}/comments`,
 };

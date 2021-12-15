@@ -1,5 +1,5 @@
 import { APIUrls } from '../helpers/url';
-import { ADD_POST, UPDATE_POSTS } from './actionType';
+import { ADD_POST, CREATE_COMMENT, UPDATE_POSTS } from './actionType';
 import { getAuthToken, getFormBody } from '../helpers/utils';
 
 export function fetchPosts() {
@@ -49,5 +49,36 @@ export function createPost(content) {
           dispatch(addPost(data.data.post));
         }
       });
+  };
+}
+
+export function createComment(content, postId) {
+  return (dispatch) => {
+    const url = APIUrls.createComment();
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: `Bearer ${getAuthToken()}`,
+      },
+      body: getFormBody({
+        content,
+        post_id: postId,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          dispatch(addComment(data.data.comment, postId));
+        }
+      });
+  };
+}
+
+export function addComment(comment, postId) {
+  return {
+    type: CREATE_COMMENT,
+    comment,
+    postId,
   };
 }
