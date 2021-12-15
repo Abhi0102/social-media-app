@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faComments } from '@fortawesome/free-solid-svg-icons';
 import { Comments } from '.';
-import { createComment } from '../actions/posts';
+import { addLike, createComment } from '../actions/posts';
 import { connect } from 'react-redux';
 
 class Post extends Component {
@@ -31,9 +31,14 @@ class Post extends Component {
       });
     }
   };
+
+  handleLike = () => {
+    const { post, user } = this.props;
+    this.props.dispatch(addLike(post._id, 'Post', user._id));
+  };
   render() {
-    const { post } = this.props;
-    const { user } = post;
+    const { post, isLoggedIn, user } = this.props;
+    const isPostLiked = post.likes.includes(user._id);
     console.log('Posts', post);
     return (
       <div className="post-container">
@@ -46,21 +51,38 @@ class Post extends Component {
             ></img>
           </div>
           <div className="post-title">
-            <Link to={`/user/${user._id}`}>{user.name}</Link>
+            <Link to={`/user/${post.user._id}`}>{post.user.name}</Link>
           </div>
         </div>
         <div className="post-content">{post.content}</div>
         <div className="like-container">
-          <FontAwesomeIcon icon={faHeart} className="like-icon" />
-          <FontAwesomeIcon icon={faComments} className="like-icon" />
+          {isPostLiked ? (
+            <FontAwesomeIcon
+              icon={faHeart}
+              className="like-icon"
+              onClick={this.handleLike}
+            />
+          ) : (
+            <FontAwesomeIcon
+              icon={faHeart}
+              className="dislike-icon"
+              onClick={this.handleLike}
+            />
+          )}
+
+          <span> {post.likes.length}</span>
+          <FontAwesomeIcon icon={faComments} className="dislike-icon" />
+          <span> {post.comments.length}</span>
         </div>
         <div className="comments-container">
-          <input
-            className="comment-input"
-            placeholder="Start Typing Here..."
-            onChange={this.handleChange}
-            onKeyPress={this.handleAddComment}
-          />
+          {isLoggedIn && (
+            <input
+              className="comment-input"
+              placeholder="Start Typing Here..."
+              onChange={this.handleChange}
+              onKeyPress={this.handleAddComment}
+            />
+          )}
           <div className="comment-list">
             {post.comments.map((comment) => (
               <Comments key={comment._id} postId={post._id} comment={comment} />
@@ -72,4 +94,7 @@ class Post extends Component {
   }
 }
 
-export default connect()(Post);
+function mapStateToProps({ auth }) {
+  return { user: auth.user };
+}
+export default connect(mapStateToProps)(Post);

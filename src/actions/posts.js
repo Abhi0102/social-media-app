@@ -1,10 +1,15 @@
 import { APIUrls } from '../helpers/url';
-import { ADD_POST, CREATE_COMMENT, UPDATE_POSTS } from './actionType';
+import {
+  ADD_POST,
+  CREATE_COMMENT,
+  UPDATE_POSTS,
+  UPDATE_POST_LIKE,
+} from './actionType';
 import { getAuthToken, getFormBody } from '../helpers/utils';
 
 export function fetchPosts() {
   return (dispatch) => {
-    const url = APIUrls.fetchPost();
+    const url = APIUrls.fetchPost(1, 10);
     fetch(url)
       .then((response) => {
         return response.json();
@@ -49,6 +54,33 @@ export function createPost(content) {
           dispatch(addPost(data.data.post));
         }
       });
+  };
+}
+
+export function addLike(id, likeType, userId) {
+  return (dispatch) => {
+    const url = APIUrls.toggleLike(id, likeType);
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: `Bearer ${getAuthToken()}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          dispatch(addLikeToStore(id, userId));
+        }
+      });
+  };
+}
+
+export function addLikeToStore(postId, userId) {
+  return {
+    type: UPDATE_POST_LIKE,
+    postId,
+    userId,
   };
 }
 

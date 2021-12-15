@@ -4,11 +4,11 @@ import { Post } from './';
 
 class PostsList extends Component {
   render() {
-    const { posts } = this.props;
+    const { posts, isLoggedIn } = this.props;
     return (
       <div className="post-list">
         {posts.map((post) => {
-          return <Post post={post} key={post._id} />;
+          return <Post post={post} key={post._id} isLoggedIn={isLoggedIn} />;
         })}
       </div>
     );

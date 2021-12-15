@@ -10,7 +10,7 @@ class Home extends Component {
       <div className="home-ui">
         <div className="post-list-container">
           {isLoggedIn && <CreatePost />}
-          <PostsList posts={posts} />
+          <PostsList posts={posts} isLoggedIn={isLoggedIn} />
         </div>
         {isLoggedIn && (
           <div className="friends-container">

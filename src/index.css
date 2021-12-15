@@ -311,6 +311,11 @@ code {
 
 .like-icon {
   margin-left: 2%;
+  color: red;
+}
+
+.dislike-icon {
+  margin-left: 2%;
   color: grey;
 }
 
