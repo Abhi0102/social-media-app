@@ -24,3 +24,5 @@ export const GET_USER_WITH_ID_FAIL = 'GET_USER_WITH_ID_FAIL';
 export const FETCH_FRIEND_SUCCESS = 'FETCH_FRIEND_SUCCESS';
 export const ADD_FRIEND = 'ADD_FRIEND';
 export const REMOVE_FRIEND = 'REMOVE_FRIEND';
+
+export const ADD_POST = 'ADD_POST';

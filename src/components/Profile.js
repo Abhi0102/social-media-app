@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { clearAuthState, editUser } from '../actions/auth';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserTie } from '@fortawesome/free-solid-svg-icons';
 
 class Profile extends Component {
   constructor(props) {
@@ -48,8 +50,13 @@ class Profile extends Component {
     const { editMode } = this.state;
     return (
       <div className="profile-container">
-        <div>
-          <img src="" alt="profile-img"></img>
+        <div className="profile-img-container">
+          <img
+            src="/favpng_avatar-user-profile-icon.png"
+            className="avatar-img"
+            alt="profile-img"
+          ></img>
+          {/* <FontAwesomeIcon icon={faUserTie} className="avatar" /> */}
         </div>
         <div className="field">
           <div>Email</div>

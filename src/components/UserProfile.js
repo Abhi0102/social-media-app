@@ -67,8 +67,12 @@ function UserProfile(props) {
 
     return (
       <div className="profile-container">
-        <div>
-          <img src="" alt="profile-img"></img>
+        <div className="profile-img-container">
+          <img
+            src="/favpng_avatar-user-profile-icon.png"
+            className="avatar-img"
+            alt="profile-img"
+          ></img>
         </div>
         <div className="field">
           <div>Email</div>

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logoutUser } from '../actions/auth';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 class Navbar extends Component {
   logOut = () => {
@@ -16,11 +18,7 @@ class Navbar extends Component {
           <div className="nav-left">Left</div>
         </Link>
         <div className="nav-center">
-          <img
-            className="search-icon"
-            src="https://cdn-icons.flaticon.com/png/512/3031/premium/3031293.png?token=exp=1639231417~hmac=0a17bab8700271eb46617d18b4578477"
-            alt="search-icon"
-          ></img>
+          <FontAwesomeIcon className="search-icon" icon={faSearch} />
           <input placeholder="Search"></input>
         </div>
         <div className="nav-right">

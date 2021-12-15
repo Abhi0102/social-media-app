@@ -39,12 +39,16 @@ code {
   width: 100%;
   font-size: 1rem;
   padding-left: 6%;
+  border-radius: 5px;
+  border: none;
+  outline: none;
 }
 
 .nav-center .search-icon {
   height: 50%;
   position: absolute;
   left: 1%;
+  color: grey;
   /* margin-left: 2%; */
 }
 
@@ -88,9 +92,10 @@ code {
   background-color: whitesmoke;
   /* border: 2px solid black; */
   margin-top: 20px;
-  height: 200px;
+  min-height: 200px;
   /* margin-left: 5%; */
   width: 80%;
+  /* display: flex; */
 }
 
 /* ----------Login Form---------- */
@@ -182,6 +187,53 @@ code {
   width: 70%;
 }
 
+/* ----------Create Post---------- */
+
+.create-post {
+  /* border: 2px solid red; */
+  margin-top: 20px;
+  height: 25vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.post-text-area-container {
+  width: 100%;
+  /* border: 2px solid greenyellow; */
+  text-align: center;
+  height: 80%;
+}
+
+.post-text-area {
+  width: 80%;
+  height: 90%;
+  resize: none;
+  outline: none;
+  border: none;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  letter-spacing: 0.1rem;
+  background: whitesmoke;
+}
+
+.post-btn {
+  position: absolute;
+  top: 80%;
+  right: 10%;
+  font-size: 1rem;
+  background-color: #fc7745;
+  padding: 0.5rem;
+  letter-spacing: 0.1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
+}
+
+/* ----------Friends Container---------- */
+
 .friends-container {
   background-color: whitesmoke;
   margin-top: 20px;
@@ -198,4 +250,108 @@ code {
   border-right: 0;
   letter-spacing: 0.1rem;
   padding-left: 1rem;
+}
+
+.friend-container {
+  /* border: 2px solid red; */
+  /* margin-top: 2%; */
+  font-size: 1rem;
+  padding: 3%;
+  border-radius: 5px;
+  display: flex;
+  max-height: 25px;
+  /* background-color: lightgrey; */
+}
+
+.friend-container:hover {
+  background-color: #eacdcd;
+}
+
+.friends-profile {
+  text-decoration: none;
+  color: black;
+}
+
+/* .avatar {
+  font-size: 2rem;
+  height: 100px;
+} */
+
+.avatar-img {
+  height: 100%;
+  /* width: 100%; */
+}
+
+.img-continer {
+  width: 10%;
+}
+
+.profile-img-container {
+  height: 100px;
+}
+
+.post-img-container {
+  height: 50px;
+  width: 10%;
+}
+.post-top-container {
+  display: flex;
+}
+
+.post-content {
+  margin-top: 2%;
+  margin-left: 2%;
+}
+
+.like-container {
+  border: 2px solid lightgrey;
+  border-left: none;
+  border-right: none;
+}
+
+.like-icon {
+  margin-left: 2%;
+  color: grey;
+}
+
+/* ----------Comments Container---------- */
+
+.comments-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.comment-input {
+  margin-top: 2%;
+  width: 90%;
+  font-size: 1rem;
+  border: 1px solid grey;
+  padding: 0.5%;
+  outline: none;
+  border-radius: 5px;
+}
+
+.comment-list {
+  margin-top: 2%;
+  width: 90%;
+  margin-bottom: 2%;
+}
+
+.comment-item {
+  background-color: #eacdcd;
+  border-radius: 5px;
+}
+
+.comment-item-title {
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  margin: 1% 2%;
+  color: grey;
+  font-weight: 500;
+}
+
+.comment-content {
+  margin-left: 2%;
+  padding-bottom: 1%;
 }

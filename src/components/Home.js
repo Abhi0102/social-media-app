@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { PostsList } from './';
+import CreatePost from './CreatePost';
 import FriendList from './FriendList';
 
 class Home extends Component {
@@ -8,6 +9,7 @@ class Home extends Component {
     return (
       <div className="home-ui">
         <div className="post-list-container">
+          {isLoggedIn && <CreatePost />}
           <PostsList posts={posts} />
         </div>
         {isLoggedIn && (

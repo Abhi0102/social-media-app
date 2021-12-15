@@ -9,6 +9,8 @@ import SignUp from './SignUp';
 import Profile from './Profile';
 import Friends from './Friends';
 import FriendList from './FriendList';
+import CreatePost from './CreatePost';
+import Comments from './Comments';
 
 export {
   PostsList,
@@ -22,4 +24,6 @@ export {
   Profile,
   Friends,
   FriendList,
+  CreatePost,
+  Comments,
 };
