@@ -21,7 +21,7 @@ class Navbar extends Component {
     return (
       <nav className="navbar">
         <Link to="/">
-          <div className="nav-left">Left</div>
+          <div className="nav-left">Be Social</div>
         </Link>
         <div className="nav-center">
           <div className="search-container">

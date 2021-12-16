@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 // import {  } from '../helpers/favpng_avatar-user-profile-icon.png';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserTie } from '@fortawesome/free-solid-svg-icons';
+
 
 function Friends(props) {
   return (

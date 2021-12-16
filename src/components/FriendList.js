@@ -4,10 +4,10 @@ import { Friends } from '.';
 // import { fetchUserFriends } from '../actions/friends';
 
 function FriendList(props) {
-  //   const friends = props.dispatch(fetchUserFriends());
+  // const friends = props.dispatch(fetchUserFriends());
   //   console.log('In Friend List', friends);
   const { friends } = props;
-  console.log(friends);
+  // console.log(friends);
   return (
     <div>
       <div className="friends-heading">

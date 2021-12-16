@@ -28,6 +28,12 @@ a {
   align-items: center;
 }
 
+.nav-left {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
 /* .nav-center {
   display: flex;
   align-items: center;
